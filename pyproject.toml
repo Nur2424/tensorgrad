@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "tensorgrad"
+version = "0.1.0"
+description = "Tensor-level autograd engine built from scratch in NumPy"
+requires-python = ">=3.10"
+dependencies = ["numpy"]
+
+[[project.authors]]
+name = "Nur Taabaldiev"
+email = "taabaldievnur06@gmail.com"
+
+[project.urls]
+Homepage = "https://github.com/nur2424/tensorgrad"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
