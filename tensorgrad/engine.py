@@ -21,7 +21,7 @@ def _unbroadcast(grad, shape):
     Sum grad over every axis that was broadcast to produce it, so that the
     result has the same shape as `shape`
 
-    Forward broadcasting pads dims on the left and stretches size-1 dims.
+    Forward broadcasting pads dims on the left and stretches size-1 dims
     The adjoint (backward) sums over those same axes
     """
     # 1. If grad has more dimensions than the target, sum over the leading axes

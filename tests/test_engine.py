@@ -5,14 +5,11 @@ Finite-difference gradient checks for every operation in engine.py
 
 Strategy
 --------
-For each op, we:
+For each op:
   1. Run the forward pass with Tensor inputs
   2. Call .backward() to get analytical gradients
   3. Compute numerical gradients via central differences
   4. Assert they match within atol=1e-4
-
-The Phase 1 acceptance criterion is test_matmul_chain: a 3-layer matmul
-chain must produce correct gradients for all three weight matrices
 """
 
 import numpy as np
@@ -30,7 +27,7 @@ from tensorgrad import Tensor
 def numerical_grad(f, x, eps=1e-5):
     """
     Central-difference gradient of scalar function f at array x
-    f : ndarray -> scalar
+    f : ndarray => scalar
     Returns an array the same shape as x
     """
     x = x.astype(np.float64)
@@ -76,7 +73,7 @@ def test_add():
 
 
 def test_add_broadcast():
-    """A has shape (3,4), B has shape (4,) -- B is broadcast along axis 0"""
+    """A has shape (3,4), B has shape (4,), B is broadcast along axis 0"""
     np.random.seed(1)
     a_d = np.random.randn(3, 4)
     b_d = np.random.randn(4)
@@ -156,7 +153,7 @@ def test_pow():
 
 
 def test_pow_negative():
-    """Fractional / negative exponents."""
+    """Fractional / negative exponents"""
     np.random.seed(7)
     a_d = np.abs(np.random.randn(3, 4)) + 0.5
 
@@ -183,10 +180,10 @@ def test_matmul_2d():
 
 
 def test_matmul_batched():
-    """Batched matmul: (B,T,C) @ (C,H) -- weight matrix is shared across batch."""
+    """Batched matmul: (B,T,C) @ (C,H) weight matrix is shared across batch"""
     np.random.seed(9)
     x_d = np.random.randn(2, 5, 8)   # (batch, seq, in)
-    w_d = np.random.randn(8, 4)       # (in, out) -- broadcast over batch
+    w_d = np.random.randn(8, 4)       # (in, out) broadcast over batch
 
     X, W = Tensor(x_d.copy()), Tensor(w_d.copy())
     (X @ W).sum().backward()
@@ -197,9 +194,8 @@ def test_matmul_batched():
 
 def test_matmul_chain():
     """
-    Phase 1 acceptance criterion.
     Three weight matrices in sequence: loss = ((A @ B) @ C).sum()
-    All three gradients must pass finite-difference checks.
+    All three gradients must pass finite-difference checks
     """
     np.random.seed(10)
     a_d = np.random.randn(4, 8)
