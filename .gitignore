@@ -1,4 +1,22 @@
+# Python
 __pycache__/
 *.pyc
-data/outputs/checkpoints/
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+*.egg
+
+# Data
+data/
+
+# Outputs — generated artifacts
+outputs/checkpoints/
 outputs/json/
+
+# Scratch
+scratch.txt
+
+# OS
+.DS_Store
