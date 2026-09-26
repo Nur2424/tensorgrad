@@ -15,8 +15,5 @@ data/
 outputs/checkpoints/
 outputs/json/
 
-# Scratch
-scratch.txt
-
 # OS
 .DS_Store
