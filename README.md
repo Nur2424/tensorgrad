@@ -123,8 +123,8 @@ n_embd=256  n_head=4  n_layer=4  block_size=64  batch=32  lr=3e-3
 
 | | val loss | parameters |
 |---|---|---|
-| tensorgrad | **1.8467** | 2 683 201 |
-| PyTorch | **1.8381** | 2 683 201 |
+| tensorgrad | **1.8467** | 3 209 216 |
+| PyTorch | **1.8381** | 3 209 216 |
 | \|diff\| | **0.0085** | — |
 
 The 0.0085 gap is numerical noise from float64 (NumPy) vs float32 (PyTorch),
