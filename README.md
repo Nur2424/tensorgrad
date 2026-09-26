@@ -217,6 +217,9 @@ weights without retraining.
   Regularization.* [arxiv.org/abs/1711.05101](https://arxiv.org/abs/1711.05101)
 - **Layer Normalization** — Ba et al. (2016).
   [arxiv.org/abs/1607.06450](https://arxiv.org/abs/1607.06450)
+- Deisenroth, Faisal, Ong — *Mathematics for Machine Learning* (Cambridge University Press, 2020).  
+  Chapter 5 (Vector Calculus) informed the backward pass derivations.  
+  Free PDF: https://mml-book.github.io
 
 ## Related repositories
 
